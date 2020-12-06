@@ -1,0 +1,14 @@
+{
+  "Controller template":{
+    "prefix": "controller",
+    "body": [
+      "import { FastifyInstance } from 'fastify';",
+      "",
+      "export const ${TM_DIRECTORY/^.+\\/(.*)$/$1/}Controller = async (fastify: FastifyInstance) => {",
+      "  fastify.get('/', async (_request, reply) => {",
+      "    reply.send({ hello: 'world' });",
+      "  });",
+      "};"
+    ]
+  }
+}
