@@ -1,19 +1,21 @@
-FROM node:12
+FROM node:14-alpine AS deps
 
-# アプリケーションディレクトリを作成する
 WORKDIR /usr/src/app
+COPY package.json yarn.lock ./
+RUN yarn install --frozen-lockfile
 
-# アプリケーションの依存関係をインストールする
-# ワイルドカードを使用して、package.json と package-lock.json の両方が確実にコピーされるようにします。
-# 可能であれば (npm@5+)
-COPY package*.json ./
+FROM node:14-alpine AS builder
 
-RUN yarn install
-# 本番用にコードを作成している場合
-# RUN npm install --only=production
-
-# アプリケーションのソースをバンドルする
+ENV NODE_ENV=production
+WORKDIR /usr/src/app
 COPY . .
+COPY --from=deps /usr/src/app/node_modules ./node_modules
+RUN yarn build
 
+FROM node:14-alpine AS runner
+
+WORKDIR /usr/src/app
+ENV NODE_ENV=production
+COPY --from=builder /usr/src/app/dist .
 EXPOSE 8080
-CMD ['yarn' 'start']
+CMD [ "node", "index.js" ]
