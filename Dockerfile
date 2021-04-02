@@ -1,9 +1,9 @@
 FROM node:14-alpine AS deps
 
-WORKDIR /opt/app
-COPY . .
+WORKDIR /app
+COPY package.json yarn.lock ./
 RUN yarn install
 
 EXPOSE 8080
 
-CMD ["node_modules/.bin/nodemon", "-L"]
+CMD ["node_modules/.bin/ts-node-dev", "src/index.ts"]
