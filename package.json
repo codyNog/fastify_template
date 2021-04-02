@@ -4,7 +4,9 @@
   },
   "scripts": {
     "dev": "ts-node-dev -r tsconfig-paths/register src/index.ts",
-    "build": "webpack"
+    "build": "webpack",
+    "lint": "eslint --max-warnings=0 '**/*.ts'",
+    "test": "jest"
   },
   "devDependencies": {
     "@types/jest": "^26.0.20",
