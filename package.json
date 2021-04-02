@@ -3,7 +3,7 @@
     "fastify": "^3.9.1"
   },
   "scripts": {
-    "dev": "ts-node-dev src/index.ts",
+    "dev": "ts-node-dev -r tsconfig-paths/register src/index.ts",
     "build": "webpack"
   },
   "devDependencies": {

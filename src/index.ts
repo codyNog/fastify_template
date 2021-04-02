@@ -1,4 +1,4 @@
-import server from "./app";
+import server from "~/app";
 
 const start = async () => {
   await server.listen(8080, "0.0.0.0").catch((err) => {

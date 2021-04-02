@@ -6,4 +6,4 @@ RUN yarn install
 
 EXPOSE 8080
 
-CMD ["node_modules/.bin/ts-node-dev", "src/index.ts"]
+CMD ["yarn", "dev"]
