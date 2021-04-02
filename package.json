@@ -1,5 +1,6 @@
 {
   "dependencies": {
+    "@sentry/node": "^6.2.5",
     "fastify": "^3.9.1"
   },
   "scripts": {
