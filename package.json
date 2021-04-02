@@ -6,14 +6,18 @@
   },
   "scripts": {
     "start": "nodemon src/index.ts",
-    "build": "rimraf dist && tsc"
+    "dev": "ts-node-dev src/index.ts",
+    "build": "rimraf dist && tsc && tsc-alias"
   },
   "devDependencies": {
     "@types/node": "^14.14.10",
+    "fastify-cli": "^2.9.1",
     "nodemon": "^2.0.6",
     "rimraf": "^3.0.2",
     "ts-loader": "^8.0.11",
     "ts-node": "^9.1.0",
+    "ts-node-dev": "^1.1.6",
+    "tsc-alias": "^1.2.9",
     "tsconfig-paths": "^3.9.0",
     "typescript": "^4.1.2"
   }

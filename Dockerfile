@@ -1,21 +1,9 @@
 FROM node:14-alpine AS deps
 
-WORKDIR /usr/src/app
-COPY package.json yarn.lock ./
-RUN yarn install --frozen-lockfile
-
-FROM node:14-alpine AS builder
-
-ENV NODE_ENV=production
-WORKDIR /usr/src/app
+WORKDIR /opt/app
 COPY . .
-COPY --from=deps /usr/src/app/node_modules ./node_modules
-RUN yarn build
+RUN yarn install
 
-FROM node:14-alpine AS runner
-
-WORKDIR /usr/src/app
-ENV NODE_ENV=production
-COPY --from=builder /usr/src/app/dist .
 EXPOSE 8080
-CMD [ "node", "index.js" ]
+
+CMD ["node_modules/.bin/nodemon", "-L"]

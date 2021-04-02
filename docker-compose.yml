@@ -1,8 +1,22 @@
 version: "3"
 services:
   node:
+    stdin_open: true
     build: .
     volumes:
       - ./app:/usr/src/app
+    environment:
+      - AWS_ACCESS_KEY_ID=dummy
+      - AWS_SECRET_ACCESS_KEY=dummy
+      - AWS_PROFILE=dummy
+      - AWS_DEFAULT_REGION=ap-northeast-1
+      - AWS_REGION=ap-northeast-1
+      - DYNAMO_ENDPOINT_URL=http://dynamodb:10080
+      - DYNAMO_USER_TABLE=user
+      - CHOKIDAR_USEPOLLING=1
     ports:
-      - "8080:8080"
+      - 8080:8080
+  dynamodb:
+    image: "instructure/dynamo-local-admin"
+    ports:
+      - 10080:8080
