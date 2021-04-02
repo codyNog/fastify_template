@@ -1,6 +1,7 @@
 import { FastifyInstance } from "fastify";
-import { indexController } from "../controller/index";
 
 export const router = async (fastify: FastifyInstance) => {
-  fastify.register(indexController);
+  fastify.get("/", async (_request, reply) => {
+    reply.send({ hello: "world" });
+  });
 };
