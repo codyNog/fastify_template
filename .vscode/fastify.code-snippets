@@ -1,14 +1,12 @@
 {
-  "Controller template":{
-    "prefix": "controller",
+  "Implement template":  {
+    "prefix": "impl",
     "body": [
-      "import { FastifyInstance } from 'fastify';",
+      "export interface ${TM_DIRECTORY/^.+\\/(.*)$/$1/}UseCase {",
+      "}",
       "",
-      "export const ${TM_DIRECTORY/^.+\\/(.*)$/$1/}Controller = async (fastify: FastifyInstance) => {",
-      "  fastify.get('/', async (_request, reply) => {",
-      "    reply.send({ hello: 'world' });",
-      "  });",
-      "};"
+      "export const ${TM_DIRECTORY/^.+\\/(.*)$/$1/}Impl: ${TM_DIRECTORY/^.+\\/(.*)$/$1/}UseCase = {",
+      "}"
     ]
   }
 }
