@@ -19,13 +19,7 @@
     "react/prop-types": "off",
     "no-restricted-imports": ["warn", { "patterns": ["../*"] }],
     "import/no-default-export": ["error"] ,
-    "no-unused-vars": [
-      "warn",
-      {
-        "varsIgnorePattern": "_",
-        "argsIgnorePattern": "_"
-      }
-    ],
+    "no-unused-vars": "off",
     "@typescript-eslint/no-unused-vars": [
       "warn",
       {
