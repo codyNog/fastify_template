@@ -1,9 +1,7 @@
-Docker化 Dockerfile修正する docker-composeも書く
+# fastify_template
 
-EC2 t3-nano
+## 概要
+fastifyの開発用テンプレート
 
-ECS
-
-Terraform 
-
-ちゃんとterminateする
+## TODO
+- Dockerfileをマルチステージにして開発と本番用ビルドを分ける
